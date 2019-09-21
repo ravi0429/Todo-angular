@@ -1,0 +1,46 @@
+<html>
+<div class="main">
+  <img class="logo"  alt="Angular Logo" src="https://cdn.pixabay.com/photo/2017/05/12/15/15/ok-2307342_960_720.png">
+<div class="box">
+<input type="text" class="todo-input" placeholder="Add a task!" [(ngModel)]="todoTitle" (keyup.enter)="addTodo()">
+
+<div class="todo-item" *ngFor="let todo of todosFiltered()" @fade>
+        <div class="todo-item-left">
+          <input type="checkbox" [(ngModel)]="todo.completed" >
+          <div  class="todo-item-label" [ngClass]="{ 'completed' : todo.completed }" >{{ todo.title }}</div>
+          
+        </div>
+        <div class="remove-item" (click)="deleteTodo(todo.id)">
+          &times;
+        </div>
+      </div>
+      <div *ngIf="remaining()>0 && (filter=='all' )"  class="extra-container" >
+        
+          <div>{{ remaining() }} items left <br>
+          {{completed() }} items done</div>
+        </div>
+        <div *ngIf="remaining()>0 && ( filter=='active')"  class="extra-container" >
+        
+            <div>{{ remaining() }} items left</div>
+          </div>
+      <div *ngIf="completed()>0 && (filter=='completed')" class="extra-container">
+        <div>{{completed()}} items done</div>
+      </div>
+      
+      <div class="extra-container">
+        <div>
+          <button [ngClass]="{'active': filter === 'all'}" (click)="filter='all'">All</button>
+          <button [ngClass]="{'active': filter === 'active'}" (click)="filter='active'">Active</button>
+          <button [ngClass]="{'active': filter === 'completed'}" (click)="filter='completed'">Completed</button>
+        </div>
+        
+      
+        <div *ngIf="atLeastOneCompleted()">
+          <button (click)="clearCompleted()">Clear Completed</button>
+        </div>
+      
+      </div>
+      
+</div>
+</div>
+</html>
