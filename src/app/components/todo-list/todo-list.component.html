@@ -1,6 +1,6 @@
-<html>
+
 <div class="main">
-  <img class="logo"  alt="Angular Logo" src="https://cdn.pixabay.com/photo/2017/05/12/15/15/ok-2307342_960_720.png">
+  <img class="logo"  alt="Todo List" src="https://cdn.pixabay.com/photo/2017/05/12/15/15/ok-2307342_960_720.png">
 <div class="box">
 <input type="text" class="todo-input" placeholder="Add a task!" [(ngModel)]="todoTitle" (keyup.enter)="addTodo()">
 
@@ -11,7 +11,7 @@
           
         </div>
         <div class="remove-item" (click)="deleteTodo(todo.id)">
-          &times;
+          <img src="https://cdn1.iconfinder.com/data/icons/device-apps-settings/2048/Recycle_bin-512.png" alt="trash" height="30px" width="30px">
         </div>
       </div>
       <div *ngIf="remaining()>0 && (filter=='all' )"  class="extra-container" >
@@ -43,4 +43,3 @@
       
 </div>
 </div>
-</html>
